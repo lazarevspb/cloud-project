@@ -22,23 +22,6 @@ public class ProductsService {
         return productsRepository.findAll();
     }
 
-    public List<Product> findAll(Integer minPrice, Integer maxPrice) {
-        List<Product> out = findAll();
-        if (minPrice != null) {
-            out = out.stream()
-                    .filter(product -> product.getPrice() >= minPrice)
-                    .collect(Collectors.toList());
-
-        }
-        if (maxPrice != null) {
-            out = out.stream()
-                    .filter(product -> product.getPrice() <= maxPrice)
-                    .collect(Collectors.toList());
-
-        }
-        return out;
-    }
-
     public Product saveOrUpdate(Product product) {
         return productsRepository.save(product);
     }
